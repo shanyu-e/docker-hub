@@ -115,5 +115,5 @@ jobs:
             cd $DOCKER_COMPOSE_PATH && \
             docker-compose up -d && \
             docker-compose ps && \
-            echo '✅ 部署成功！当前使用镜像：$IMAGE_NAME:$FIXED_TAG'
+            echo '✅ 部署成功！！当前使用镜像：$IMAGE_NAME:$FIXED_TAG'
           "
