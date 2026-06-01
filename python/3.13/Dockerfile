@@ -29,4 +29,4 @@ RUN uv sync --frozen --no-dev
 ENV VIRTUAL_ENV=/app/.venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-# 基础镜像到此结束，不需要复制业务代码
+# 基础镜像到此结束，不需要复制代码
