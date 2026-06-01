@@ -25,9 +25,9 @@ ARG PURE_DATABASE_URL
 ENV DATABASE_URL=$PURE_DATABASE_URL
 RUN apt update && \
     apt install -y --no-install-recommends \
-      curl \
-      nginx \
-      supervisor && \
+    curl \
+    nginx \
+    supervisor && \
     # 清理 apt 缓存，减小镜像体积
     apt clean && \
     rm -rf /var/lib/apt/lists/*
