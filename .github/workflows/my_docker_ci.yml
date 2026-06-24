@@ -21,6 +21,10 @@ jobs:
             name: python-3.13
           - dir: node/20
             name: node-20
+          - dir: remark/backend
+            name: remark-backend
+          - dir: remark/frontend
+            name: remark-frontend
 
     steps:
       - name: Checkout repository
@@ -40,6 +44,7 @@ jobs:
             python/**
             node/**
             rust/**
+            remark/**
             **/Dockerfile
             **/*.txt
             **/*.sh
