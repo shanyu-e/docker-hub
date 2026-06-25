@@ -18,7 +18,7 @@ RUN curl -sSfL https://golangci-lint.run/install.sh | sh -s -- -b $(go env GOPAT
 # 3. Go 开发工具
 # 注意：delve 在 alpine (musl) 下即使编译成功，运行时调试也可能存在兼容性问题。
 RUN go install github.com/go-delve/delve/cmd/dlv@v1.22.1
-RUN go install github.com/air-verse/air@v1.51.0
+RUN go install github.com/air-verse/air@v1.49.0
 RUN go install golang.org/x/tools/cmd/goimports@v0.17.0
 RUN go install mvdan.cc/gofumpt@v0.5.0
 
