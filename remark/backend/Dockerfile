@@ -23,5 +23,5 @@ RUN go install mvdan.cc/gofumpt@v0.5.0
 WORKDIR /build/backend
 
 # 4. 预下载 Go 依赖（利用缓存，加速本地构建）
-COPY ./remark/backend/go.mod ./remark/backend/go.sum ./
+COPY go.mod go.sum ./
 RUN go mod download
