@@ -14,6 +14,6 @@ RUN apk add --no-cache \
 WORKDIR /srv/frontend
 
 # 2. 预下载前端依赖（利用缓存，加速本地构建）
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY apps/remark42/package.json ./apps/remark42/
+COPY frontend/package.json frontend/pnpm-lock.yaml frontend/pnpm-workspace.yaml ./
+COPY frontend/apps/remark42/package.json ./apps/remark42/
 RUN --mount=type=cache,id=pnpm,target=/root/.pnpm-store/v3 pnpm i

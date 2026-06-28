@@ -21,9 +21,9 @@ jobs:
             name: python-3.13
           - dir: node/20
             name: node-20
-          - dir: remark/backend
+          - dir: remark
             name: remark-backend
-          - dir: remark/frontend
+          - dir: remark
             name: remark-frontend
 
     steps:
