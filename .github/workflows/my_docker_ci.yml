@@ -90,3 +90,14 @@ jobs:
             ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USER }}/${{ matrix.image.name }}:latest
           cache-from: type=registry,ref=${{ env.DOCKER_USER }}/${{ matrix.image.name }}:buildcache
           cache-to: type=registry,ref=${{ env.DOCKER_USER }}/${{ matrix.image.name }}:buildcache,mode=max
+
+      - name: Notify host to sync image
+        if: env.changed == 'true' && (matrix.image.name == 'remark-backend' || matrix.image.name == 'remark-frontend')
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
+        run: |
+          curl -sf -X POST "${WEBHOOK_URL}" \
+            -H "Content-Type: application/json" \
+            -H "X-Webhook-Secret: ${WEBHOOK_SECRET}" \
+            -d "{\"tag\":\"${{ env.TIMESTAMP }}\",\"image\":\"${{ matrix.image.name }}\"}"
