@@ -1,0 +1,16 @@
+[{
+  "id": "example-hook",
+  "execute-command": "/etc/webhook/script.sh",
+  "command-working-directory": "/etc/webhook",
+  "trigger-rule": {
+    "match": {
+      "type": "value",
+      "value": "your-secret-here",
+      "parameter": { "source": "header", "name": "X-Webhook-Secret" }
+    }
+  },
+  "pass-arguments-to-command": [
+    { "source": "payload", "name": "param1" },
+    { "source": "payload", "name": "param2" }
+  ]
+}]
