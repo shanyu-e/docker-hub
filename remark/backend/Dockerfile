@@ -17,7 +17,9 @@ RUN mkdir -p /var/run/sshd \
     && ssh-keygen -A \
     && echo "root:root" | chpasswd \
     && sed -i 's/#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
-    && sed -i 's/#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+    && sed -i 's/#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config \
+    && sed -i 's/AllowTcpForwarding no/AllowTcpForwarding yes/' /etc/ssh/sshd_config \
+    && echo "AllowTcpForwarding yes" >> /etc/ssh/sshd_config
 
 # 3. golangci-lint
 RUN curl -sSfL https://golangci-lint.run/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.55.2
