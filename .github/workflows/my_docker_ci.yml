@@ -25,6 +25,8 @@ jobs:
             name: remark-backend
           - dir: remark/frontend
             name: remark-frontend
+          - dir: webhook
+            name: webhook
 
     steps:
       - name: Checkout repository
