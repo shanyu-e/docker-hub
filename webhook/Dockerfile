@@ -1,11 +1,7 @@
-FROM almir/webhook
+FROM alpine:3.20
 
-# 安装常用工具（修复旧镜像 apk 日志权限问题）
-RUN mkdir -p /var/cache/apk /var/log \
-    && touch /var/log/apk.log \
-    && chmod 666 /var/log/apk.log \
-    && apk update \
-    && apk add --no-cache \
+# 安装常用工具
+RUN apk add --no-cache \
     curl \
     wget \
     bash \
@@ -13,6 +9,11 @@ RUN mkdir -p /var/cache/apk /var/log \
     git \
     openssh-client \
     bind-tools
+
+# 安装 webhook（TARGETARCH 由 buildx 多架构构建自动注入，值为 amd64/arm64）
+ARG TARGETARCH
+RUN curl -sSL "https://github.com/adnanh/webhook/releases/download/2.8.1/webhook-linux-${TARGETARCH}.tar.gz" \
+    | tar xz -C /usr/local/bin --strip-components=1
 
 WORKDIR /etc/webhook
 
