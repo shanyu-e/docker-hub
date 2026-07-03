@@ -1,7 +1,11 @@
 FROM almir/webhook
 
-# 安装常用工具
-RUN apk add --no-cache \
+# 安装常用工具（修复旧镜像 apk 日志权限问题）
+RUN mkdir -p /var/cache/apk /var/log \
+    && touch /var/log/apk.log \
+    && chmod 666 /var/log/apk.log \
+    && apk update \
+    && apk add --no-cache \
     curl \
     wget \
     bash \
