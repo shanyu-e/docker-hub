@@ -1,7 +1,7 @@
 FROM almir/webhook
 
 # 安装常用工具
-RUN apk add --no-cache \
+RUN apk update && apk add --no-cache \
     curl \
     wget \
     bash \
