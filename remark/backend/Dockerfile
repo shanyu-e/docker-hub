@@ -10,7 +10,8 @@ RUN apk add --no-cache \
 	coreutils \
 	build-base \
 	linux-headers \
-	openssh-server
+	openssh-server \
+	openssh-client
 
 # 2. SSH 配置（用于 VS Code Remote SSH）
 RUN mkdir -p /var/run/sshd \
