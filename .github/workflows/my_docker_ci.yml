@@ -99,6 +99,8 @@ jobs:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
           WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
         run: |
+          echo "Waiting 60s for image to be available on registry..."
+          sleep 60
           curl -sf -X POST "${WEBHOOK_URL}" \
             -H "Content-Type: application/json" \
             -H "X-Webhook-Secret: ${WEBHOOK_SECRET}" \
