@@ -6,6 +6,7 @@ RUN apk add --no-cache \
     curl \
     bash \
     openssh-server \
+    openssh-client \
     && npm i -g \
     pnpm@7 \
     typescript \
