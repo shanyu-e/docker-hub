@@ -21,6 +21,10 @@ jobs:
             name: python-3.13
           - dir: node/20
             name: node-20
+          - dir: remark-pro/backend
+            name: remark42-backend-pro-base
+          - dir: remark-pro/frontend
+            name: remark42-frontend-pro-base
           - dir: remark/backend
             name: remark-backend
           - dir: remark/frontend
