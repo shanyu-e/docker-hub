@@ -51,6 +51,7 @@ jobs:
             node/**
             rust/**
             remark/**
+            remark-pro/**
             **/Dockerfile
             **/*.txt
             **/*.sh
