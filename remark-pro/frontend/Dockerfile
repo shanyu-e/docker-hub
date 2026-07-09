@@ -29,4 +29,5 @@ RUN --mount=type=cache,id=pnpm,target=/root/.pnpm-store/v3 \
 
 # 验证环境
 RUN pnpm --version && \
-    echo "Frontend build environment ready"
+    echo "Frontend build environment ready" && \
+    echo "Updated: 2026-07-09"
