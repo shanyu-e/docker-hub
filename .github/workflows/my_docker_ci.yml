@@ -41,32 +41,27 @@ jobs:
         id: timestamp
         run: echo "TIMESTAMP=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
 
-      # 检测变更文件/目录
-      - name: Get changed files & directories
-        id: changed_files
-        uses: tj-actions/changed-files@v44
-        with:
-          files: |
-            python/**
-            node/**
-            rust/**
-            remark/**
-            remark-pro/**
-            **/Dockerfile
-            **/*.txt
-            **/*.sh
-
-      # 判断当前目录是否变更
+      # 判断当前目录是否变更（直接用 git diff，不依赖第三方 action）
       - name: Check if current image dir changed
         id: skip_check
         run: |
-          CHANGED_DIRS="${{ steps.changed_files.outputs.all_changed_files }}"
           CURRENT_DIR="${{ matrix.image.dir }}"
-          if echo "$CHANGED_DIRS" | grep -q "$CURRENT_DIR"; then
-            echo "changed=true" >> $GITHUB_ENV
+          BASE_SHA="${{ github.event.before }}"
+          HEAD_SHA="${{ github.sha }}"
+
+          echo "Comparing $BASE_SHA..$HEAD_SHA"
+
+          # 如果 before 是空 SHA（新分支/首次推送），认为全部变更
+          if [ "$BASE_SHA" = "0000000000000000000000000000000000000000" ]; then
+            CHANGED=true
+          elif git diff --name-only "$BASE_SHA" "$HEAD_SHA" | grep -q "^${CURRENT_DIR}/"; then
+            CHANGED=true
           else
-            echo "changed=false" >> $GITHUB_ENV
+            CHANGED=false
           fi
+
+          echo "changed=$CHANGED" >> $GITHUB_ENV
+          echo "Result: ${{ matrix.image.name }} changed=$CHANGED"
 
       - name: Skip build (no changes)
         if: env.changed == 'false'
