@@ -100,7 +100,7 @@ jobs:
           cache-to: type=registry,ref=${{ env.DOCKER_USER }}/${{ matrix.image.name }}:buildcache,mode=max
 
       - name: Notify host to sync image
-        if: env.changed == 'true' && (matrix.image.name == 'remark-backend' || matrix.image.name == 'remark-frontend')
+        if: env.changed == 'true'
         env:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
           WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
