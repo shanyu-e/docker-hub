@@ -29,4 +29,4 @@ RUN go mod download
 # 验证环境
 RUN go version && \
     echo "Backend build environment ready" && \
-    echo "Updated: 2026-07-09-2"
+    echo "Updated: 2026-07-09-3"
