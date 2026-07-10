@@ -15,10 +15,16 @@ RUN apk add --no-cache \
 
 # 2. SSH 配置（用于 VS Code Remote SSH）
 RUN mkdir -p /var/run/sshd \
-    && ssh-keygen -A \
-    && echo "root:root" | chpasswd \
-    && sed -i 's/#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
-    && sed -i 's/#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+	&& ssh-keygen -A \
+	&& echo "root:root" | chpasswd \
+	&& sed -i 's/#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
+	&& sed -i 's/#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config \
+	&& sed -i -E 's/^[[:space:]]*#?[[:space:]]*AllowTcpForwarding.*/AllowTcpForwarding yes/' /etc/ssh/sshd_config \
+	&& sed -i -E '/^[[:space:]]*#?[[:space:]]*AllowTcpForwarding/d' /etc/ssh/sshd_config \
+	&& echo "AllowTcpForwarding yes" >> /etc/ssh/sshd_config \
+	&& echo "GatewayPorts no" >> /etc/ssh/sshd_config \
+	&& echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \
+	&& echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 
 WORKDIR /srv/frontend
 
