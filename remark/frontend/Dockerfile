@@ -1,6 +1,7 @@
 FROM node:16.20-alpine
 
 # 1. 基础工具 + SSH 服务器
+# 版本号参考 frontend/apps/remark42/package.json
 RUN apk add --no-cache \
     git \
     curl \
@@ -8,10 +9,11 @@ RUN apk add --no-cache \
     openssh-server \
     openssh-client \
     && npm i -g \
-    pnpm@7 \
-    typescript \
-    eslint \
-    prettier
+    pnpm@7.33.6 \
+    cross-env@7.0.3 \
+    typescript@4.7.4 \
+    eslint@8.18.0 \
+    prettier@2.7.1
 
 # 2. SSH 配置（用于 VS Code Remote SSH）
 RUN mkdir -p /var/run/sshd \
