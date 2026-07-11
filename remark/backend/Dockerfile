@@ -30,6 +30,7 @@ RUN mkdir -p /var/run/sshd \
 RUN curl -sSfL https://golangci-lint.run/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.55.2
 
 # 4. Go 开发工具
+RUN go install golang.org/x/tools/gopls@v0.14.2
 RUN go install github.com/go-delve/delve/cmd/dlv@v1.22.1
 RUN go install github.com/cosmtrek/air@v1.49.0
 RUN go install golang.org/x/tools/cmd/goimports@v0.17.0
