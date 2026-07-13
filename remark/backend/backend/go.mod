@@ -56,6 +56,7 @@ require (
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect
 	github.com/klauspost/compress v1.17.9 // indirect
+	github.com/lib/pq v1.10.9 // indirect
 	github.com/montanaflynn/stats v0.7.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/redis/go-redis/v9 v9.4.0 // indirect
@@ -72,6 +73,7 @@ require (
 	golang.org/x/text v0.16.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
 // trigger ci 20260702225433
 // trigger ci 20260702230903
 // trigger debug 20260702232112
