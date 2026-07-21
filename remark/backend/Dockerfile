@@ -35,7 +35,7 @@ RUN go install github.com/go-delve/delve/cmd/dlv@v1.22.1
 RUN go install github.com/cosmtrek/air@v1.49.0
 RUN go install golang.org/x/tools/cmd/goimports@v0.17.0
 RUN go install mvdan.cc/gofumpt@v0.5.0
-RUN go install github.com/tsenart/vegeta@v12.11.1
+RUN go install github.com/tsenart/vegeta/v12@v12.11.1
 
 WORKDIR /build/backend
 
