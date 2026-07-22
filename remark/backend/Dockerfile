@@ -43,4 +43,4 @@ WORKDIR /build/backend
 COPY backend/go.mod backend/go.sum ./
 RUN go mod download
 
-# 6. 2026-07-22 12:40 触发构建
+# 6. 2026-07-22 20:40 触发构建
